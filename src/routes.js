@@ -1,5 +1,6 @@
 import HomePage from './pages/home.vue';
 import AboutPage from './pages/about.vue';
+import TabsPage from './pages/tabs.vue';
 import FormPage from './pages/form.vue';
 import DynamicRoutePage from './pages/dynamic-route.vue';
 import NotFoundPage from './pages/not-found.vue';
@@ -23,6 +24,10 @@ export default [
   {
     path: '/about/',
     component: AboutPage,
+  },
+  {
+    path: '/tabs/',
+    component: TabsPage,
   },
   {
     path: '/form/',

@@ -31,6 +31,9 @@
   },
   "homepage": "http://framework7.io/vue/",
   "dependencies": {
+    "@capacitor/android": "^1.0.0-beta.1",
+    "@capacitor/cli": "^1.0.0-beta.1",
+    "@capacitor/core": "^1.0.0-beta.1",
     "framework7": "^3.0.0",
     "framework7-icons": "^0.9.1",
     "framework7-vue": "^3.0.0",
