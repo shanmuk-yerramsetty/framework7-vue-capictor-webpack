@@ -16,11 +16,25 @@
           ...
         </f7-block>
       </f7-tab>
+      <f7-tab id="tab-4" class="page-content">
+        <f7-block>
+          <p>Tab 4 content</p>
+          ...
+        </f7-block>
+      </f7-tab>
+      <f7-tab id="tab-5" class="page-content">
+        <f7-block>
+          <p>Tab 5 content</p>
+          ...
+        </f7-block>
+      </f7-tab>
     </f7-tabs>
-    <f7-toolbar tabbar class="tabs-bottom">
-      <f7-link tab-link="#tab-1" tab-link-active>Tab 1</f7-link>
-      <f7-link tab-link="#tab-2">Tab 2</f7-link>
-      <f7-link tab-link="#tab-3">Tab 3</f7-link>
+    <f7-toolbar tabbar class="tabs-bottom" >
+      <f7-link tab-link="#tab-1" tab-link-active class="tab-1"></f7-link>
+      <f7-link tab-link="#tab-2" class="tab-2"></f7-link>
+      <f7-link tab-link="#tab-3" class="tab-3"></f7-link>
+      <f7-link tab-link="#tab-4" class="tab-4"></f7-link>
+      <f7-link tab-link="#tab-5" class="tab-5"></f7-link>
     </f7-toolbar>
   </f7-page>
 </template>

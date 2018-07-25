@@ -41,3 +41,56 @@ p.trailer-title {
 .md .toolbar:not(.toolbar-bottom-md):not(.messagebar) ~ * .page-content, .md .toolbar:not(.toolbar-bottom-md):not(.messagebar) ~ .page-content{
   padding-top: 0;
 }
+
+.tabs-bottom, .md .toolbar {
+  background-color: #e4e4e4;
+}
+.toolbar-inner .link {
+  background-repeat: no-repeat;
+  background-position-y: bottom;
+  background-color: #e4e4e4;
+}
+
+.tab-1 {
+  background-image: url('../images/cit08-image_view-topcharts-normal-background.png');
+}
+
+.tab-2 {
+  background-image: url('../images/cit08-image_view-calendar-normal-background.png');
+}
+
+.tab-3 {
+  background-image: url('../images/cit08-image_view-featured-normal-background.png');
+}
+
+.tab-4 {
+  background-image: url('../images/cit08-image_view-intheaters-normal-background.png');
+}
+
+.tab-5 {
+  background-image: url('../images/cit08-image_view-favorites-normal-background.png');
+}
+
+.tab-link-active.tab-1 {
+  background-image: url('../images/cit08-image_view-topcharts-hover-background.png');
+}
+
+.tab-link-active.tab-2 {
+  background-image: url('../images/cit08-image_view-calendar-hover-background.png');
+}
+
+.tab-link-active.tab-3 {
+  background-image: url('../images/cit08-image_view-featured-hover-background.png');
+}
+
+.tab-link-active.tab-4 {
+  background-image: url('../images/cit08-image_view-intheaters-hover-background.png');
+}
+
+.tab-link-active.tab-5 {
+  background-image: url('../images/cit08-image_view-favorites-hover-background.png');
+}
+
+.tabbar a.tab-link, .tabbar a.link {
+  width: 20%;
+}

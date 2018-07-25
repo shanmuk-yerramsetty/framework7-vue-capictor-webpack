@@ -47,6 +47,7 @@
       trailers () {
         var self=this
         var filteredResults = this.$root.$data.trailers.filter(function(cust){return cust.title.toLowerCase().indexOf(self.search.toLowerCase())>=0})
+        // TODO: Below number 3 should be dynamic which depends on the device like tablet should have 5 and mobiles will have 3
         return this.listToMatrix(filteredResults, 3)
       }
     },
@@ -106,4 +107,3 @@
     width: 30%;
   }
 </style>
-
