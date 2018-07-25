@@ -6,16 +6,16 @@
       </f7-nav-left>
       <f7-nav-title>Trailers</f7-nav-title>
       <f7-nav-right>
-        <f7-link class="searchbar-enable" data-searchbar=".searchbar-components" icon-ios="f7:search_strong" icon-md="material:search"></f7-link>
+        <f7-link class="searchbar-enable" data-searchbar=".searchbar-trailers" icon-ios="f7:search_strong" icon-md="material:search"></f7-link>
       </f7-nav-right>
-      <f7-searchbar class="searchbar-components" search-container=".components-list" search-in="p" expandable></f7-searchbar>
+      <f7-searchbar class="searchbar-trailers" expandable @input="searchTrailers($event)" @change="resetSearch($event)"></f7-searchbar>
     </f7-navbar>
 
     <f7-swiper pagination>
-      <f7-swiper-slide v-for="(banner, index) in banners" :key="index"><img v-bind:src="banner" width="320" height="150"></f7-swiper-slide>
+      <f7-swiper-slide v-for="(banner, index) in banners" :key="index"><img v-bind:src="banner" width="375" height="150"></f7-swiper-slide>
     </f7-swiper>
 
-    <f7-block class="components-list searchbar-found">
+    <f7-block class="trailer-list">
       <f7-row v-for="(trailer_chunk, index) in trailers" :key="index">
         <f7-col v-for="(trailer, i) in trailer_chunk" :key="i">
           <img v-bind:src="trailer.img_url" width="110" height="140">
@@ -31,29 +31,42 @@
 <script>
   import { f7Searchbar } from 'framework7-vue';
   export default {
-    name: 'home',
+    name: 'home-page',
     components: {
       f7Searchbar
+    },
+    data () {
+      return {
+        search: ''
+      }
     },
     computed: {
       banners () {
         return this.$root.$data.banners
       },
       trailers () {
-        return this.listToMatrix(this.$root.$data.trailers, 3)
+        var self=this
+        var filteredResults = this.$root.$data.trailers.filter(function(cust){return cust.title.toLowerCase().indexOf(self.search.toLowerCase())>=0})
+        return this.listToMatrix(filteredResults, 3)
       }
     },
     methods: {
+      searchTrailers (event) {
+        this.search = event.target.value
+      },
+      resetSearch () {
+        this.search = event.target.value
+      },
       listToMatrix (list, elementsPerSubArray) {
-        var matrix = [], i, k;
+        var matrix = [], i, k
         for (i = 0, k = -1; i < list.length; i++) {
           if (i % elementsPerSubArray === 0) {
-            k++;
-            matrix[k] = [];
+            k++
+            matrix[k] = []
           }
-          matrix[k].push(list[i]);
+          matrix[k].push(list[i])
         }
-        return matrix;
+        return matrix
       }
     }
   }
@@ -71,9 +84,9 @@
     background: #fff;
     color: #000;
   }
-  .swiper-slide img {
+  /*.swiper-slide img {
     width: 375px;
-  }
+  }*/
   .demo-swiper .swiper-slide {
     box-sizing: border-box;
     border: 1px solid #ddd;
