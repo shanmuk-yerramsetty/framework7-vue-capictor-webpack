@@ -11,9 +11,12 @@
       <f7-searchbar class="searchbar-trailers" expandable @input="searchTrailers($event)" @change="resetSearch($event)"></f7-searchbar>
     </f7-navbar>
 
-    <f7-swiper pagination>
-      <f7-swiper-slide v-for="(banner, index) in banners" :key="index"><img v-bind:src="banner" width="375" height="150"></f7-swiper-slide>
-    </f7-swiper>
+    <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="20" data-slides-per-view="1" class="swipe-slider swiper-container swiper-init demo-swiper">
+      <div class="swiper-pagination"></div>
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" v-for="(banner, index) in banners" :key="index"><img v-bind:src="banner"></div>
+      </div>
+    </div>
 
     <f7-block class="trailer-list">
       <f7-row v-for="(trailer_chunk, index) in trailers" :key="index">
@@ -37,8 +40,19 @@
     },
     data () {
       return {
-        search: ''
+        search: '',
+        dataSpace: 50,
+        dataSlides: 1
       }
+    },
+    mounted () {
+      // this.handleResize()
+    },
+    created () {
+      window.addEventListener('resize', this.handleResize)
+    },
+    destroyed () {
+      window.removeEventListener('resize', this.handleResize)
     },
     computed: {
       banners () {
@@ -47,11 +61,23 @@
       trailers () {
         var self=this
         var filteredResults = this.$root.$data.trailers.filter(function(cust){return cust.title.toLowerCase().indexOf(self.search.toLowerCase())>=0})
-        // TODO: Below number 3 should be dynamic which depends on the device like tablet should have 5 and mobiles will have 3
         return this.listToMatrix(filteredResults, 3)
       }
     },
     methods: {
+       handleResize (event) {
+        let mySwiper = document.querySelector('.swipe-slider').swiper
+        if (mySwiper.params) {
+          if (window.matchMedia("(orientation: portrait)").matches) {
+            mySwiper.params.slidesPerView = 1
+          }
+
+          if (window.matchMedia("(orientation: landscape)").matches) {
+            mySwiper.params.slidesPerView = 2
+          }
+          mySwiper.update()
+        }
+      },
       searchTrailers (event) {
         this.search = event.target.value
       },
