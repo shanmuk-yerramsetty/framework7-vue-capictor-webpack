@@ -1,1 +1,30 @@
 /* Your app styles here */
+.ios .navbar-inner {
+  background: #E64040;
+}
+i.icon {
+  color: #fdfd7c;
+}
+.title {
+  color: #fff;
+}
+.ios .block {
+  margin: 10px 0;
+}
+.ios .swiper-pagination-bullet-active {
+  background: #E64040;
+}
+.swiper-pagination-bullet {
+  background: #f5f5f4;
+}
+p.trailer-title {
+  margin: 0.2em 20px 1em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 70px;
+  height: 1.2em;
+  white-space: nowrap;
+}
+.ios .searchbar-disable-button {
+  color: #E64040;
+}
