@@ -1,1 +1,43 @@
 /* Your app styles here */
+.navbar-inner {
+  background: #E64040;
+}
+i.icon {
+  color: #fdfd7c;
+}
+.title {
+  color: #fff;
+}
+.block {
+  margin: 10px 0 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #E64040 !important;
+}
+.swiper-pagination-bullet {
+  background: #fff;
+}
+.swiper-pagination-bullet {
+  opacity: 1;
+}
+p.trailer-title {
+  margin: 0.2em 20px 1em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 70px;
+  height: 1.2em;
+  white-space: nowrap;
+}
+.searchbar-disable-button {
+  color: #E64040;
+}
+
+/* Styling to make Tabs appear always at bottom of the screen*/
+.tabs-bottom {
+  bottom: 0 !important;
+  top: unset !important;
+}
+.md .toolbar:not(.toolbar-bottom-md):not(.messagebar) ~ * .page-content, .md .toolbar:not(.toolbar-bottom-md):not(.messagebar) ~ .page-content{
+  padding-top: 0;
+}

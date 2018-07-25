@@ -11,6 +11,10 @@ import PanelRightPage from './pages/panel-right.vue';
 export default [
   {
     path: '/',
+    component: TabsPage,
+  },
+  {
+    path: '/home',
     component: HomePage,
   },
   {
