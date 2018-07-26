@@ -11,10 +11,18 @@
       <f7-searchbar class="searchbar-trailers" expandable @input="searchTrailers($event)" @change="resetSearch($event)"></f7-searchbar>
     </f7-navbar>
 
-    <div data-pagination='{"el": ".swiper-pagination"}' data-space-between="20" data-slides-per-view="1" class="swipe-slider swiper-container swiper-init demo-swiper">
+    <!-- <f7-swiper pagination class="swipe-slider swiper-init" :params="{slidesPerView: 1, spaceBetween: 20, pagination: { el: '.swiper-pagination', clickable: true} }">
+      <f7-swiper-slide class="swipe-tile" v-for="(banner, index) in banners" :key="index">
+        <img v-bind:src="banner" width="375">
+      </f7-swiper-slide>
+    </f7-swiper> -->
+
+    <div data-pagination='{"el": ".swiper-pagination", "clickable": "true"}' data-space-between="20" :data-slides-per-view="noOfSlides" class="swipe-slider swiper-container swiper-init demo-swiper">
       <div class="swiper-pagination"></div>
       <div class="swiper-wrapper">
-        <div class="swiper-slide" v-for="(banner, index) in banners" :key="index"><img v-bind:src="banner"></div>
+        <div class="swiper-slide" v-for="(banner, index) in banners" :key="index">
+          <img v-bind:src="banner" height="140" width="375">
+        </div>
       </div>
     </div>
 
@@ -41,12 +49,14 @@
     data () {
       return {
         search: '',
-        dataSpace: 50,
-        dataSlides: 1
+        tilesPerRow: 3,
+        noOfSlides: 1,
+        fullWidth: document.documentElement.clientWidth
       }
     },
     mounted () {
-      // this.handleResize()
+      this.handleResize()
+      this.tilesCountPerRow
     },
     created () {
       window.addEventListener('resize', this.handleResize)
@@ -61,19 +71,30 @@
       trailers () {
         var self=this
         var filteredResults = this.$root.$data.trailers.filter(function(cust){return cust.title.toLowerCase().indexOf(self.search.toLowerCase())>=0})
-        return this.listToMatrix(filteredResults, 3)
+        return this.listToMatrix(filteredResults, this.tilesPerRow)
+      },
+      tilesCountPerRow () {
+        if (window.matchMedia("(orientation: portrait)").matches) {
+          this.noOfSlides = 1
+          this.tilesPerRow = 3
+        }
+        if (window.matchMedia("(orientation: landscape)").matches) {
+          this.noOfSlides = 2
+          this.tilesPerRow = 5
+        }
       }
     },
     methods: {
-       handleResize (event) {
+      handleResize (event) {
         let mySwiper = document.querySelector('.swipe-slider').swiper
-        if (mySwiper.params) {
+        if (mySwiper) {
           if (window.matchMedia("(orientation: portrait)").matches) {
             mySwiper.params.slidesPerView = 1
+            this.tilesPerRow = 3
           }
-
           if (window.matchMedia("(orientation: landscape)").matches) {
             mySwiper.params.slidesPerView = 2
+            this.tilesPerRow = 5
           }
           mySwiper.update()
         }
@@ -133,3 +154,4 @@
     width: 30%;
   }
 </style>
+
